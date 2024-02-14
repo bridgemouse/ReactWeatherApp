@@ -3,12 +3,15 @@
 import Container from "@/components/Container";
 import Navbar from "@/components/Navbar";
 import axios from "axios";
-import { format, parseISO } from "date-fns";
+import { format, fromUnixTime, parseISO } from "date-fns";
 import Image from "next/image";
 import { useQuery } from "react-query";
 import { convertKelvinToFahrenheit } from "../../convertKelvinToFahrenheit";
 import WeatherIcon from "@/components/WeatherIcon";
 import { getDayOrNightIcon } from "@/utils/getDayOrNightIcon";
+import WeatherDetails from "@/components/WeatherDetails";
+import { metersToMiles } from "@/utils/metersToMiles";
+import { metersPerSecondToMilesPerHour } from "@/utils/metersPerSecondToMilesPerHour";
 
 interface WeatherEntry {
   dt: number;
@@ -67,7 +70,13 @@ interface WeatherData {
 
 
 
-
+export default function Home() {
+  const { isLoading, error, data } = useQuery<WeatherData>(
+    "repoData", 
+    async () => {
+    const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=west%20chester&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`);
+    return data;
+  });
 
   console.log("Data:", data)
 
@@ -108,17 +117,36 @@ interface WeatherData {
                   </p>
                 </div>
                 {/* Hourly Icons */}
-                <div className="flex gap-10 sm:gap-16 overflow-x-auto w-full justify-between pr-3">
+                <div className="flex gap-10 sm:gap-12 overflow-x-auto w-full justify-between pr-3 py-2">
                   {data?.list.map((d,i)=> (
-                    <div key={i} className="flex flex-col justify-between gap-2 items-center text-xs font-semibold">
-                      <p className="whitespace-nowrap">{format(parseISO(d.dt_txt), 'h:mm a')}</p>
+                    <div key={i} className="flex flex-col justify-between items-center text-xs">
+                      <p className="whitespace-nowrap font-semibold">{format(parseISO(d.dt_txt), 'h:mm a')}</p>
+                      <p className="text-xs space-x-2 font-semibold">{format(parseISO(firstData?.dt_txt ?? ''), "EEE")}</p>
                       <WeatherIcon iconName={d.weather[0].icon}/>
-                      <p> {convertKelvinToFahrenheit(d.main.temp ?? 0)}°</p>
+                      <p className="font-semibold"> {convertKelvinToFahrenheit(d.main.temp ?? 0)}°</p>
                     </div>
                   ))}
                 </div>
               </Container>
             </div>
+            <div className="flex gap-4">
+                  {/* Main Daily Detail */}
+                  <Container className=" w-fit justify-center flex-col px-4 items-center">
+                    <p className="capitalize text-center">{firstData?.weather[0].description}</p>
+                    <WeatherIcon iconName={firstData?.weather[0].icon ?? ""}/>
+                  </Container>
+                  {/* Secondary Daily Detail */}
+                  <Container className="bg-yellow-300/80 px-6 gap-4 justify-between overflow-x-auto">
+                    <WeatherDetails 
+                      visability={metersToMiles(firstData?.visibility ?? 10000)} 
+                      humidity={`${firstData?.main.humidity}%`} 
+                      windSpeed={metersPerSecondToMilesPerHour(firstData?.wind.speed ?? 0)} 
+                      airPressure={`${firstData?.main.pressure} hPa`} 
+                      sunrise={format(fromUnixTime(data?.city.sunrise ?? 1707911839), "H:mm aaa")} 
+                      sunset={format(fromUnixTime(data?.city.sunset ?? 1707950169), "h:mm aaa")}
+                    />
+                  </Container>
+                </div>
           </section>
           {/* 7 Forecast Data */}
           <section className="glex w-full gap-4">
