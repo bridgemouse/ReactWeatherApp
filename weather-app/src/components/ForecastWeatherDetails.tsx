@@ -10,8 +10,8 @@ export interface ForecastWeatherDetailsProps extends WeatherDetailProps {
     day: string;
     temp: number;
     feelsLike: number;
-    tempMin: string;
-    tempMax: string;
+    tempMin: number;
+    tempMax: number;
     description: string;
 }
 
@@ -22,8 +22,8 @@ export default function ForecastWeatherDetails(props : ForecastWeatherDetailsPro
     day = "Default",
     temp = 0,
     feelsLike = 0,
-    tempMin = "Default",
-    tempMax = "Default",
+    tempMin = 0,
+    tempMax = 0,
     description = "Default",
   } = props
 
@@ -31,7 +31,7 @@ export default function ForecastWeatherDetails(props : ForecastWeatherDetailsPro
     <Container className='gap-4'>
         {/* Main Focus */}
         <section className='flex gap-4 items-center px-4'>
-            <div>
+            <div className='flex flex-col items-center'>
                 <WeatherIcon iconName={weatherIcon}/>
                 <p>{date}</p>
                 <p className='text-sm'>{day}</p>

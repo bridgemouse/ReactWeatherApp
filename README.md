@@ -6,6 +6,22 @@ In React, the term props stands for properties, which refers to the properties o
 
 Props add a layer of protection to both security and performance. Props work through passing data into a component to be used, typically for UI needs.
 
+--- HTML ---
+
+HTML (HyperText Markup Language) is a markup language that tells web browsers how to structure the web pages you visit. It can be as complicated or as simple as the web developer wants it to be. HTML consists of a series of elements, which you use to enclose, wrap, or mark up different parts of content to make it appear or act in a certain way.
+
+HTML elements are the building blocks of web pages. They define the structure and content of a page. JavaScript is a programming language that can be used to interact with HTML elements and make them dynamic.
+
+Void Elements: Some elements consist of a single tag, which is typically used to insert/embed something in the document. Such elements are called void elements.
+    ex: <WeatherIcon iconName={firstData?.weather[0].icon ?? ""}/>
+
+Attributes: Attributes contain extra information about the element that won't appear in the content.
+    ex: <div className="flex gap-10 sm:gap-12 overflow-x-auto w-full justify-between pr-3 py-2">
+
+<div> 
+    Generic container element that can be used to group together related HTML elements. It is often used to create sections of a web page, such as a header, footer, or navigation bar.  
+</div>
+
 --- Misc ---
 
 Date-fns - CTRL Click into format and see all of the options available for manipulating a date object into various values
@@ -17,3 +33,5 @@ className="" is an insanely powerful tool for visual manipulation and spacing
 For a function to be accessable from outside the file, you must "export default function functionName(){}"
 
 Backticks - the way to create a string that accepts values (props) as part of it. ex: `${milesPerHour.toFixed(0)} mph`;
+
+Single or double quotes are interchangeable 
