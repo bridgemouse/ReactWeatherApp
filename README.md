@@ -2,6 +2,8 @@
 
 Welcome to the Dynamic Weather App repository! This web application is built with React and TypeScript, designed to provide users with real-time weather data in a stylish and interactive interface.
 
+![Weather App Screenshot](weather_app_screenshot.png)
+
 ## Features
 
 - **Real-Time Weather Data:** Utilizes the OpenWeather API to fetch and display up-to-date weather information.
