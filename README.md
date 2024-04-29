@@ -1,37 +1,36 @@
-# Notes
+# Dynamic Weather App
 
---- Properties (Props) ---
+Welcome to the Dynamic Weather App repository! This web application is built with React and TypeScript, designed to provide users with real-time weather data in a stylish and interactive interface.
 
-In React, the term props stands for properties, which refers to the properties of an object. This is because all elements created in React are JavaScript objects. As a result, passing data into a component is done by creating properties and values for the object.
+## Features
 
-Props add a layer of protection to both security and performance. Props work through passing data into a component to be used, typically for UI needs.
+- **Real-Time Weather Data:** Utilizes the OpenWeather API to fetch and display up-to-date weather information.
+- **Interactive Interface:** Offers a user-friendly interface with interactive elements for an engaging experience.
+- **Responsive Design:** Ensures compatibility across various devices and screen sizes, allowing users to access weather information on the go.
+- **Modern Technologies:** Developed using modern web technologies such as React, TypeScript, and CSS for efficient and scalable development.
+- **State Management:** Implements state management techniques to efficiently manage application data and UI state.
+- **Deployment:** Easily deployable to platforms like Netlify or Vercel for seamless accessibility.
 
---- HTML ---
+## Getting Started
 
-HTML (HyperText Markup Language) is a markup language that tells web browsers how to structure the web pages you visit. It can be as complicated or as simple as the web developer wants it to be. HTML consists of a series of elements, which you use to enclose, wrap, or mark up different parts of content to make it appear or act in a certain way.
+To run the Dynamic Weather App locally on your machine, follow these steps:
 
-HTML elements are the building blocks of web pages. They define the structure and content of a page. JavaScript is a programming language that can be used to interact with HTML elements and make them dynamic.
+1. Clone this repository to your local machine using `git clone https://github.com/bridgemouse/ReactWeatherApp.git`
+2. Navigate to the project directory: `cd ReactWeatherApp/weather-app`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your browser and visit `http://localhost:3000` to view the app.
 
-Void Elements: Some elements consist of a single tag, which is typically used to insert/embed something in the document. Such elements are called void elements.
-    ex: <WeatherIcon iconName={firstData?.weather[0].icon ?? ""}/>
+## Usage
 
-Attributes: Attributes contain extra information about the element that won't appear in the content.
-    ex: <div className="flex gap-10 sm:gap-12 overflow-x-auto w-full justify-between pr-3 py-2">
+- Enter the name of a city in the search bar to retrieve its current weather information.
+- Explore the interactive interface to view additional weather details such as temperature, humidity, and wind speed.
+- Enjoy a seamless weather browsing experience with dynamic updates and smooth transitions.
 
-<div> 
-    Generic container element that can be used to group together related HTML elements. It is often used to create sections of a web page, such as a header, footer, or navigation bar.  
-</div>
+## Contributing
 
---- Misc ---
+Contributions are welcome! If you have any suggestions, bug fixes, or feature enhancements, please feel free to open an issue or submit a pull request.
 
-Date-fns - CTRL Click into format and see all of the options available for manipulating a date object into various values
+---
 
-className="" is an insanely powerful tool for visual manipulation and spacing
-    · flex: Used to set the flexbox layout mode of the element. Flexbox is a CSS layout module that allows you to easily align and distribute items in a container. 
-    · 
-
-For a function to be accessable from outside the file, you must "export default function functionName(){}"
-
-Backticks - the way to create a string that accepts values (props) as part of it. ex: `${milesPerHour.toFixed(0)} mph`;
-
-Single or double quotes are interchangeable 
+Thank you for checking out the Dynamic Weather App! If you have any questions or feedback, please don't hesitate to [contact me](mailto:ebridgehouse@gmail.com).
